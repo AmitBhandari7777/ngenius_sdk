@@ -23,11 +23,12 @@ class CheckoutScreen extends StatefulWidget {
     required this.onPaymentCreated,
     required this.logLevel,
     this.onError,
+    required this.action
   });
 
   final void Function() onPaymentCreated;
   final void Function()? onError;
-  final String apiUrl, apiKey, outletId, currency;
+  final String apiUrl, apiKey, outletId, currency,action;
   final int amount;
   final LogLevel logLevel;
 
@@ -71,6 +72,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         currency: currency,
         value: amount,
         onError: () => _showError(),
+        action: ""
       );
 
       final paymentResponse = await sendPaymentDetails(
